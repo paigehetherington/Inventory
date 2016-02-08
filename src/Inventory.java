@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -8,12 +9,34 @@ public class Inventory {
     public static void main(String[] args) {
         ArrayList<Item> inventoryList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        HashMap<String, String> userInfo = new HashMap(); //create hashmap for user info (username, password)
+        userInfo.put("Paige", "1234");
+        userInfo.put("Doug", "5678");
+        userInfo.put("Keaton", "7890");
+        userInfo.put("Zach", "3456");
+while (true) {
+    System.out.println("What is your username?");
+    String username = scanner.nextLine();
+    if (userInfo.containsKey(username)) {
+        System.out.println("What is your password?");
+        String password = scanner.nextLine();
+        if (userInfo.containsValue(password)) {
+            System.out.println("Welcome");
+            break; //sends it to rest of code
+        } else {
+            System.out.println("Password Incorrect, Please try again");
+        }
+
+    } else {
+        System.out.println("Username not found");
+    }
+}
 
         while (true) {
-            int lineNumber = 1;
-            for (Item i : inventoryList) { //for each item i in arraylist print this
+            int lineNumber = 1; //set value to start numbering at 1
+            for (Item i : inventoryList) { //for each item i in arraylist print this (see below)
                 System.out.println(lineNumber + ". " +i.itemName + " " + i.quantity);
-                lineNumber++;
+                lineNumber++; //line +1
 
             }
 
@@ -57,6 +80,9 @@ public class Inventory {
 
 
             }
+
+
+
         }
     }
 
