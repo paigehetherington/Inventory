@@ -45,7 +45,9 @@ while (true) {
                 System.out.println("1. Create new item");
                 System.out.println("2. Remove item");
                 System.out.println("3. Update quantity");
+            System.out.println("4. Logout");
                 System.out.println("Which option would you like?");
+
 
                 String option = scanner.nextLine();
 
@@ -73,6 +75,9 @@ while (true) {
                     inventoryList.add(num - 1, itemToBeUpdated);
 
 
+                }
+                else if (option.equals("4")) {
+                    System.out.println("Goodbye");
                 }
             else {
                     System.out.println("Invalid response");
