@@ -14,38 +14,37 @@ public class Inventory {
         userInfo.put("Doug", "5678");
         userInfo.put("Keaton", "7890");
         userInfo.put("Zach", "3456");
-while (true) {
-    System.out.println("What is your username?");
-    String username = scanner.nextLine();
-    if (userInfo.containsKey(username)) {
-        System.out.println("What is your password?");
-        String password = scanner.nextLine();
-        if (userInfo.containsValue(password)) {
-            System.out.println("Welcome");
-            break; //sends it to rest of code
-        } else {
-            System.out.println("Password Incorrect, Please try again");
-        }
-
-    } else {
-        System.out.println("Username not found");
-    }
-}
-
         while (true) {
-            int lineNumber = 1; //set value to start numbering at 1
-            for (Item i : inventoryList) { //for each item i in arraylist print this (see below)
-                System.out.println(lineNumber + ". " +i.itemName + " " + i.quantity);
-                lineNumber++; //line +1
-
+            while (true) {
+                System.out.println("What is your username?");
+                String username = scanner.nextLine();
+                if (userInfo.containsKey(username)) {
+                    System.out.println("What is your password?");
+                    String password = scanner.nextLine();
+                    if (userInfo.containsValue(password)) {
+                        System.out.println("Welcome");
+                        break; //sends it to rest of code
+                    } else {
+                        System.out.println("Password Incorrect, Please try again");
+                    }
+                } else {
+                    System.out.println("Username not found");
+                }
             }
 
+            while (true) {
+                int lineNumber = 1; //set value to start numbering at 1
+                for (Item i : inventoryList) { //for each item i in arraylist print this (see below)
+                    System.out.println(lineNumber + ". " + i.itemName + " " + i.quantity);
+                    lineNumber++; //line +1
 
+                }
                 System.out.println("");
                 System.out.println("1. Create new item");
                 System.out.println("2. Remove item");
                 System.out.println("3. Update quantity");
-            System.out.println("4. Logout");
+                System.out.println("4. Logout");
+                System.out.println("5. Exit");
                 System.out.println("Which option would you like?");
 
 
@@ -75,11 +74,14 @@ while (true) {
                     inventoryList.add(num - 1, itemToBeUpdated);
 
 
-                }
-                else if (option.equals("4")) {
+                } else if (option.equals("4")) {
                     System.out.println("Goodbye");
+                    break;
+                 } else if  (option.equals("5")) {
+                    //throw new Exception ("System exit");
+                    System.exit(0);
                 }
-            else {
+                else {
                     System.out.println("Invalid response");
                 }
 
@@ -87,9 +89,9 @@ while (true) {
             }
 
 
-
         }
     }
+}
 
 
 
