@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Created by vajrayogini on 2/8/16.
  */
 public class Inventory {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         ArrayList<Item> inventoryList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         HashMap<String, String> userInfo = new HashMap(); //create hashmap for user info (username, password)
@@ -21,7 +21,7 @@ public class Inventory {
                 if (userInfo.containsKey(username)) {
                     System.out.println("What is your password?");
                     String password = scanner.nextLine();
-                    if (userInfo.containsValue(password)) {
+                    if (userInfo.get(username).equalsIgnoreCase(password)) {
                         System.out.println("Welcome");
                         break; //sends it to rest of code
                     } else {
@@ -35,7 +35,8 @@ public class Inventory {
             while (true) {
                 int lineNumber = 1; //set value to start numbering at 1
                 for (Item i : inventoryList) { //for each item i in arraylist print this (see below)
-                    System.out.println(lineNumber + ". " + i.itemName + " " + i.quantity);
+                    System.out.printf("%d. Item: %s  Quantity: %d Category: %s\n", lineNumber, i.name, i.quantity, i.category);
+                    //System.out.println(String.format("%d. %s %s\n", lineNumber, i.name, i.quantity));
                     lineNumber++; //line +1
 
                 }
@@ -56,8 +57,13 @@ public class Inventory {
                     System.out.println("What is the quantity?");
                     String quantity = scanner.nextLine();
                     int quantNum = Integer.valueOf(quantity); //type conversion string to int
-                    Item item = new Item(text, quantNum);
+                    System.out.println("What is the category?");
+                    String category = scanner.nextLine();
+                    Item item = new Item();
+                    item = item.createItem(text, quantNum, category);
                     inventoryList.add(item);
+
+
                 } else if (option.equals("2")) {
                     System.out.println("Which item would you like to remove?");
                     int num = Integer.valueOf(scanner.nextLine()); //converted type in one line by using scanner.nextLine as string
@@ -110,3 +116,11 @@ Optional: Create a login system with a few hard-coded usernames and passwords.*/
             [1] Create a new item
     [2] Remove an item
     [3] Update an item's quantity*/
+
+   /* Use String.format or System.out.printf anywhere you are manually concatenating strings with +.
+        Create at least five classes that extend your existing inventory item class, each one representing a product category.
+        Each category class should have a constructor that sets the "category" field to the appropriate name.
+        Create a static createItem method in your main class which returns an object using the correct category class (or throws and error for an invalid category name).
+static InventoryItem createItem(String name, int quantity, String category)
+        Use createItem to create a new item for option 1.
+        When you list the items, list their category as well.*/
