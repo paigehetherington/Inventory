@@ -6,7 +6,7 @@ public class Item {
     int quantity;
     String category;
 
-    public Item () {
+    public Item () {  //need blank constructor in parent class
 
     }
 

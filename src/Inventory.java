@@ -46,7 +46,7 @@ public class Inventory {
                 System.out.println("3. Update quantity");
                 System.out.println("4. Logout");
                 System.out.println("5. Exit");
-                System.out.println("Which option would you like?");
+                System.out.println("Which option would you like?");P
 
 
                 String option = scanner.nextLine();
@@ -59,7 +59,7 @@ public class Inventory {
                     int quantNum = Integer.valueOf(quantity); //type conversion string to int
                     System.out.println("What is the category?");
                     String category = scanner.nextLine();
-                    Item item = new Item();
+                    Item item = new Item(); //item is parent class so all others follow
                     item = item.createItem(text, quantNum, category);
                     inventoryList.add(item);
 
