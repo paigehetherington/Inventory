@@ -1,7 +1,7 @@
 /**
  * Created by vajrayogini on 2/8/16.
  */
-public class Item {
+public class Item { //parent class
     String name;
     int quantity;
     String category;
